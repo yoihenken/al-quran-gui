@@ -67,17 +67,13 @@ class Ui_MainWindow(object):
     
     def suratDetail(self):
         Dialog = QtWidgets.QDialog()
-        ui = Ui_Dialog()
+        self.ui = Ui_Dialog()
         self.getDetailSurat = requests.get(baseUrl+str(self.daftarSurat.currentRow()+1)).json()
         data = self.getDetailSurat['data']
-        ui.getSurat(data)
-        ui.setupUi(Dialog)     
+        self.ui.setupUi(Dialog) 
+        self.ui.getSurat(data)
         Dialog.show()
         Dialog.exec_()
-
-
-
-
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

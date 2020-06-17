@@ -26,9 +26,12 @@ class Ui_Dialog(QtWidgets.QWidget):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
         self.pushButton.clicked.connect(self.closeFun)
-    
+        
+
+
     def closeFun(self):
         print('close')
+        self.close()
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -36,13 +39,18 @@ class Ui_Dialog(QtWidgets.QWidget):
         self.label.setText(_translate("Dialog",'Nama Surat'))
         self.label_2.setText(_translate("Dialog", "Arti Indonesia"))
         self.pushButton.setText(_translate("Dialog", "Close"))
-    def getSurat(self,data):
-        suratList = data['ayahs']
-        # self.label.setText(suratList['englishName']) ##yg ini gk bisa di set
-        for item in suratList:
-            # self.listWidget.addItem(item['text']['arab']) ##sama ini
-            print(item['text']['arab'])
 
+    def getSurat(self,data):
+        
+        suratList = data['ayahs']
+        print(data['englishName'])
+        englishName = str(data['englishName'])
+        self.label.setText(englishName) ##yg ini gk bisa di set
+        
+        for item in suratList:
+            self.listWidget.addItem(item['text']['arab']) ##sama ini
+            print('%d\n', item['text']['arab'])
+        
 
 if __name__ == "__main__":
     import sys
@@ -52,3 +60,5 @@ if __name__ == "__main__":
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
+    ui.close()
+    self.close()
