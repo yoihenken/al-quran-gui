@@ -33,15 +33,15 @@ class Ui_Dialog(QtWidgets.QWidget):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog",''))
+        self.label.setText(_translate("Dialog",'Nama Surat'))
         self.label_2.setText(_translate("Dialog", "Arti Indonesia"))
         self.pushButton.setText(_translate("Dialog", "Close"))
     def getSurat(self,data):
         suratList = data['ayahs']
-        self.label.setText(suratList['englishName'])
-        # for item in suratList:
-        #     self.listWidget.addItem(item['text']['arab'])
-        #     print(item['text']['arab'])
+        # self.label.setText(suratList['englishName']) ##yg ini gk bisa di set
+        for item in suratList:
+            # self.listWidget.addItem(item['text']['arab']) ##sama ini
+            print(item['text']['arab'])
 
 
 if __name__ == "__main__":
